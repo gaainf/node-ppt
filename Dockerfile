@@ -2,6 +2,8 @@
 ARG VERSION=16-bullseye-slim
 FROM node:${VERSION} AS base
 
+RUN mkdir -p /usr/src/app
+RUN chmod -R 777 /usr/src/app
 WORKDIR /usr/src/app
 
 RUN  apt-get update \
