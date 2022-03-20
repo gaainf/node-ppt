@@ -19,14 +19,16 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
     - name: Build docker images
-      cmd: yarn docker:build
+      run: yarn docker:build
     - name: Run docker
-      cmd: yarn docker:run
+      run: yarn docker:run
     - name: Test
-      cmd: |
+      run: |
         ls -la
         docker exec -i node ls -la
+        docker exec -i node whoami
+        docker exec -i node chmod -R 777 .
         yarn docker:install
         yarn docker:test
     - name: Stop docker
-      cmd: yarn docker:rm
+      run: yarn docker:rm
