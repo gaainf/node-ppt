@@ -22,8 +22,8 @@ jobs:
       run: |
         yarn run docker:run
     - name: Test
-      continue-on-error: true
       run: |
+        yarn run docker:install
         yarn run docker:test
     - name: Stop docker
       run: yarn run docker:rm
