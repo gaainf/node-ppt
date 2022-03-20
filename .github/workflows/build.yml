@@ -10,22 +10,22 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        node-version: [16-bullseye-slim]
+        node-version: [16]
     steps:
     - name: Checkout code
       uses: actions/checkout@v2
     - name: Use nodejs:${{ matrix.node-version }}
       uses: actions/setup-node@v1
     - name: Build docker images
-      run: yarn run docker:build
+      run: yarn docker:build
     - name: Run docker and test
       run: |
-        yarn run docker:run
+        yarn docker:run
     - name: Test
       run: |
         ls -la
         docker exec -i node ls -la
-        yarn run docker:install
-        yarn run docker:test
+        yarn docker:install
+        yarn docker:test
     - name: Stop docker
-      run: yarn run docker:rm
+      run: yarn docker:rm
