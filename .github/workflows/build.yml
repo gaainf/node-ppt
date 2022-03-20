@@ -21,7 +21,6 @@ jobs:
     - name: Run docker and test
       run: |
         yarn run docker:run
-        docker exec -i pptvnc ls -la
     - name: Test
       continue-on-error: true
       run: |
