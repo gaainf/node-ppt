@@ -24,9 +24,9 @@ jobs:
       uses: docker/build-push-action@v1
       with:
         context: .
-          platforms: |-
-            linux/amd64
-            linux/arm64
+        platforms: |-
+          linux/amd64
+          linux/arm64
         cache-from: type=gha
         cache-to: type=gha
         username: ${{ secrets.DOCKER_USERNAME }}
