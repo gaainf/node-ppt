@@ -23,6 +23,8 @@ jobs:
         yarn run docker:run
     - name: Test
       run: |
+        ls -la
+        docker exec -i node ls -la
         yarn run docker:install
         yarn run docker:test
     - name: Stop docker
