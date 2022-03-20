@@ -29,7 +29,8 @@ jobs:
         ls -la
         docker exec -i node ls -la
         docker exec -i node whoami
-        docker exec -i node chmod -R 777 .
+        docker exec -i --user root node chmod -R 777 .
+        docker exec -i node ls -la
         yarn docker:install
         yarn docker:test
     - name: Stop docker
