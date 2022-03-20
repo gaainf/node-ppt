@@ -33,3 +33,5 @@ jobs:
         push: true
         tags: ${{ secrets.DOCKER_USERNAME }}/node-ppt:latest,${{ secrets.DOCKER_USERNAME }}/node-ppt:${{ matrix.tag-version }}
         build-args: VERSION=${{ matrix.tag-version }}
+        cache-from: type=gha
+        cache-to: type=gha,mode=max
