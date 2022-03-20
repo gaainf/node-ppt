@@ -26,6 +26,5 @@ jobs:
       continue-on-error: true
       run: |
         yarn run docker:test
-        docker exec -i pptvnc ls -la
     - name: Stop docker
       run: yarn run docker:rm
