@@ -1,0 +1,31 @@
+name: Build and test
+
+on:
+  push:
+    paths-ignore:
+    - "README.md"
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [16-bullseye-slim]
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+    - name: Use nodejs:${{ matrix.node-version }}
+      uses: actions/setup-node@v1
+    - name: Build docker images
+      run: yarn run docker:build
+    - name: Run docker and test
+      run: |
+        yarn run docker:run
+        docker exec -i pptvnc ls -la
+    - name: Test
+      continue-on-error: true
+      run: |
+        yarn run docker:test
+        docker exec -i pptvnc ls -la
+    - name: Stop docker
+      run: yarn run docker:rm

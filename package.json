@@ -1,4 +1,13 @@
 {
+  "scripts": {
+    "docker:build": "docker build -t node-ppt .",
+    "docker:run": "docker run -dit --security-opt=seccomp:unconfined -v `pwd`:/usr/src/app --name node node-ppt",
+    "docker:exec": "docker exec -it node bash",
+    "docker:install": "docker exec -i node yarn install",
+    "docker:test": "docker exec -i node yarn test",
+    "docker:rm": "docker rm -f node",
+    "test": "node test.js"
+  },
   "devDependencies": {
     "chai": "^4.3.6",
     "chai-files": "^1.4.0",
