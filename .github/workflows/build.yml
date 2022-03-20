@@ -19,7 +19,9 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
     - name: Build docker images
-      run: yarn docker:build
+      run: |
+        docker --version
+        yarn docker:build
     - name: Run docker
       run: yarn docker:run
     - name: Test
